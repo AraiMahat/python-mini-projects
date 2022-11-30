@@ -144,11 +144,161 @@
 # print(x)
 # print(y)
 ##################
-n = int(input())
-k = 2
-while n != 1:
-    if n % k == 0:
-        n = int(n / k)
-        print(k, end=' * ')
-    else:
-        k += 1
+# n = int(input())
+# k = 2
+# while n != 1:
+#     if n % k == 0:
+#         n = int(n / k)
+#         print(k, end=' * ')
+#     else:
+#         k += 1
+##############
+# n = int(input())
+# summa = 0
+# for i in range(n):
+#     num = int(input())
+#     summa += num
+#     while num > 9:
+#
+# print(summa)
+#############
+# num = int(input())
+# n = num + num
+# n = n * num
+# n = n - num
+# n = n // num
+# print(n)
+############
+# def add_hello(s: str) -> str:
+#     return s[:5] + " hello" + s[4:]
+#
+#
+# print(add_hello('This is the first test'))
+#####################
+# def second_is_a(s: str) -> str:
+#     return s[:1] + 'A' + s[2:]
+#
+#
+# print(second_is_a('tttt'))
+################
+# def format_str(letters: str, f: str) -> str:
+#     letters = letters.lower()
+#     for i in range(len(f)):
+#         if f[i].isupper():
+#             letters = letters.replace(letters[i], letters[i].upper())
+#     return letters
+#
+#
+# print(format_str('aBcDe', 'Xxxxx!'))
+# print(format_str('helloworld', 'Xxxxx, xxxxx!'))
+##############
+# def more_spaces(s: str) -> str:
+#     s = " ".join(s)
+#     for i in s:
+#         if i == ' ':
+#             count += 1
+#     print(count)
+#     return s
+#
+# print(more_spaces('Hello, world!'))
+#############
+# halls, capacity, viewers = int(input()), int(input()), int(input())
+# print(halls * capacity >= viewers)
+##############
+# def odd_num(a, b):
+#     if a / b % 2 != 0:
+#         return True
+#     else:
+#         return False
+#
+#
+# x, y = int(input()), int(input())
+# print(odd_num(x, y))
+#############
+# number = int(input())
+# if number > 0:
+#     print(-number)
+# else:
+#     print(-number)
+#################
+# unit = int(input())
+# if unit < 1:
+#     print('no army')
+# elif 1 <= unit <= 9:
+#     print('few')
+# elif 10 <= unit <= 49:
+#     print('pack')
+# elif 50 <= unit <= 499:
+#     print('swarm')
+# elif 500 <= unit <= 999:
+#     print('swarm')
+# else:
+#     print('legion')
+###
+# def normalize(name):
+#     new_name = ""
+#     old = ["é", "ë", "á", "å", "œ", "æ"]
+#     new = ["e", "e", "a", "aa", "oe", "ae"]
+#
+#     for letter in name:
+#         if letter in old:
+#             new_name += new[old.index(letter)]
+#         else:
+#             new_name += letter
+#
+#     return new_name
+#
+#
+# print(normalize('Charlotte Brontë'))
+####
+# dictionary = ['all', 'an', 'and', 'as', 'closely', 'correct', 'equivocal',
+#               'examine', 'indication', 'is', 'means', 'minutely', 'or', 'scrutinize',
+#               'sign', 'the', 'to', 'uncertain']
+# sentence = input().split()
+# errors = []
+# for word in sentence:
+#     if word not in dictionary:
+#         errors.append(word)
+# if errors:
+#     print('\n'.join(errors))
+# else:
+#     print("OK")
+###############
+# put your python code here
+# grades = input().split()
+# count_a = 0
+# total = 0
+# for grade in grades:
+#     total += 1
+#     if grade == 'A':
+#         count_a += 1
+# print(round(count_a / total, 2))
+################
+# write your code here
+msg_0 = "Enter an equation"
+msg_1 = "Do you even know what numbers are? Stay focused!"
+msg_2 = "Yes ... an interesting math operation." \
+        " You've slept through all classes, haven't you?"
+msg_3 = "Yeah... division by zero. Smart move..."
+
+
+def equation():
+    print(msg_0)
+    x, op, y = input().split()
+    while True:
+        try:
+            x = float(x)
+            y = float(y)
+        except ValueError:
+            print(msg_1)
+            equation()
+        except TypeError:
+            print(msg_2)
+            equation()
+        else:
+            if op not in ["+", "-", "*", "/"]:
+                print(msg_2)
+                break
+
+
+equation()
