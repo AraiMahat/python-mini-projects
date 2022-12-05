@@ -19,6 +19,7 @@ msg_12 = "Last chance! Do you really want to embarrass yourself? (y / n)"
 msg_ = [msg_0, msg_1, msg_2, msg_3, msg_4, msg_5, msg_6, msg_7, msg_8, msg_9, msg_10, msg_11, msg_12]
 
 memory = 0
+continue_calculations = False
 
 
 def check(v1, v2, v3):
@@ -35,26 +36,25 @@ def check(v1, v2, v3):
 
 
 def is_one_digit(v):
-    if -10 < v < 10 and v.is_integer():
-        output = True
-    else:
-        output = False
-    return output
+    return -10 < v < 10 and v.is_integer()
 
 
 while True:
     print(msg_0)
     x, operation, y = input().split()
+
     try:
         result = 0
-        if x == "M":
-            x = memory
-        elif y == "M":
-            y = memory
+
+        x = memory if x == "M" else x
+        y = memory if y == "M" else y
+
         x = float(x)
         y = float(y)
+
         if operation not in "+-*/":
             print(msg_2)
+            continue
         else:
             check(x, y, operation)
             if x or y == 0:
@@ -78,6 +78,7 @@ while True:
                 if answer == "y":
                     if is_one_digit(result):
                         msg_index = 10
+
                         while True:
                             print(msg_[msg_index])
                             answer = input()
@@ -90,22 +91,34 @@ while True:
                                     break
                             elif answer == "n":
                                 break
+                            else:
+                                continue
 
                     else:
                         memory = result
+                    break
 
-                    print(msg_5)
                 elif answer == "n":
-                    print(msg_5)
-                else:
-                    print(msg_4)
-                answer = input()
-                if answer == "y":
+                    break
+
+                elif answer != "n":
                     continue
-                elif answer == "n":
-                    break
-                else:
-                    break
+
+        while True:
+            answer = input(msg_[5])
+            if answer == "y":
+                continue_calculations = True
+                break
+            elif answer == "n":
+                continue_calculations = False
+                break
+            else:
+                continue
+
+        if continue_calculations:
+            continue
+        else:
+            break
     except ValueError:
         print(msg_1)
         continue
